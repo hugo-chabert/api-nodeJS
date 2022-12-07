@@ -1,17 +1,22 @@
 var express = require('express');
 var routeur = express.Router();
+var app = express();
+const jwt = require('jsonwebtoken');
+const userController = require('../controllers/userController');
+
+var user = new userController();
+
+app.use(express.json());
 
 routeur.post('/login', function(req, res){
     res.send('login');
 })
 
-routeur.post('/register', (req, res) =>{
+routeur.post('/register', function(req, res){
     res.send('register');
 })
 
-routeur.get('/', (req, res) =>{
-    res.send('users');
-})
+routeur.get('/', user.users);
 
 routeur.get('/id/:id', (req, res) =>{
     res.send(':id');
