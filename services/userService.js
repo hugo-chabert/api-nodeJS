@@ -55,13 +55,14 @@ module.exports = {
         );
     },
     updateUser: (data, callBack) => {
+        console.log(data);
         db.query(
             `UPDATE user SET email=?, password=?, firstname=?, lastname=? WHERE id = ?`,
             [
-                data.first_name,
-                data.last_name,
                 data.email,
                 data.password,
+                data.firstname,
+                data.lastname,
                 data.id
             ],
             (error, results, fields) => {
